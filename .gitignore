@@ -1,0 +1,10 @@
+.idea/
+*.iml
+*.iws
+.classpath
+.settings
+!.idea/runConfigurations
+
+target/
+allure-report/
+extent-report/
