@@ -10,7 +10,7 @@ import models.ui.pages.Homepage;
 import models.ui.pages.WebTables;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.openqa.selenium.WebElement;
-import utils.contexts.Context;
+import utils.contexts.ContextTestData;
 import utils.contexts.ScenarioContext;
 import utils.contexts.TestContext;
 import utils.framework.PageObjectManager;
@@ -52,7 +52,7 @@ public class DemoQaSteps {
     public void enterNewPersonInRegistrationForm(String firstName, String lastName, String age, String eMail, String department){
         // Step test data generated on the run:
         final String salary = RandomStringUtils.randomNumeric(4);
-        scenarioContext.setScenarioContext(Context.SALARY, salary);
+        scenarioContext.setScenarioContext(ContextTestData.SALARY, salary);
 
         // Instructions:
         webTables.clickAddButton();
@@ -69,7 +69,7 @@ public class DemoQaSteps {
     // VERIFICATION STEPS:
     @Then("^New Person is displayed in the Web Table with (.+), (.+), (.+), (.+) and (.+)")
     public void personIsDisplayedInWebTable(String expectedFirstName, String expectedLastName, String expectedAge, String expectedEmail, String expectedDepartment){
-        String expectedSalary = (String) scenarioContext.getScenarioContextByKey(Context.SALARY);
+        String expectedSalary = (String) scenarioContext.getScenarioContextByKey(ContextTestData.SALARY);
 
         WebElement personTableRow = webTables.getPersonByEmailAddress(expectedEmail);
         List<String> actualPersonAttributes = webTables.getAllAttributesForGivenPerson(personTableRow);

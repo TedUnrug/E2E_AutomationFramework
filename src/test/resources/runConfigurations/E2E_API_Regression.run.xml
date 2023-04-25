@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="E2E_UI_Regression_Firefox" type="MavenRunConfiguration" factoryName="Maven">
+  <configuration default="false" name="E2E_API_Regression" type="MavenRunConfiguration" factoryName="Maven">
     <MavenSettings>
       <option name="myGeneralSettings" />
       <option name="myRunnerSettings" />
@@ -10,13 +10,14 @@
           </option>
           <option name="goals">
             <list>
-              <option value="-Dcucumber.filter.tags=@regression and @ui" />
-              <option value="-Dbrowser=firefox" />
+              <option value="-Dcucumber.filter.tags=@regression and @api" />
             </list>
           </option>
           <option name="pomFileName" />
           <option name="profilesMap">
-            <map />
+            <map>
+              <entry key="qa" value="true" />
+            </map>
           </option>
           <option name="resolveToWorkspace" value="false" />
           <option name="workingDirPath" value="$PROJECT_DIR$" />

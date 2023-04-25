@@ -7,7 +7,7 @@ import io.restassured.response.Response;
 import models.api.models.resources.bookstore.BookStoreResources;
 import models.api.models.resources.bookstore.responses.Book;
 import models.api.models.resources.bookstore.responses.Books;
-import utils.contexts.Context;
+import utils.contexts.ContextTestData;
 import utils.contexts.ScenarioContext;
 import utils.contexts.TestContext;
 import utils.framework.EndpointManager;
@@ -43,7 +43,7 @@ public class BookStoreSteps {
         booksResponse.books().stream()
                 .filter(book -> book.title().equals(bookTitle))
                 .findFirst()
-                .ifPresentOrElse(book -> scenarioContext.setScenarioContext(Context.BOOK, book),
+                .ifPresentOrElse(book -> scenarioContext.setScenarioContext(ContextTestData.BOOK, book),
                         ()-> {throw new RuntimeException("There was no book with matching title.");});
     }
 
@@ -51,7 +51,7 @@ public class BookStoreSteps {
 
     @Then("^The book has correct Publisher (.+)")
     public void verifyBookHasExpectedPublisher(String publisherName){
-        Book book = (Book) scenarioContext.getScenarioContextByKey(Context.BOOK);
+        Book book = (Book) scenarioContext.getScenarioContextByKey(ContextTestData.BOOK);
         assertThat(book.publisher(), is(equalTo(publisherName)));
     }
 }
