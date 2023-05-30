@@ -54,8 +54,8 @@ public class PageObject {
         WebElement tableRowToBeReturned = null;
         waitUntilElementsAreVisible(tableRows);
         for (WebElement tableRow: tableRows) {
-            String email = tableRow.findElement(tableRowCell).getText();
-            if (email.equals(expectedCellContent)){
+            String actualCellContent = tableRow.findElement(tableRowCell).getText();
+            if (actualCellContent.equals(expectedCellContent)){
                 tableRowToBeReturned = tableRow;
                 break;
             }
